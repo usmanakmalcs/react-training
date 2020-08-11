@@ -1,13 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, combineReducers} from "redux";
 import './index.css';
-import Application from './Components/App/App';
+import App from './Components/App/App';
 import * as serviceWorker from './serviceWorker';
+import user_reducer from "./store/user-panel/user-panel-reducer";
+import admin_reducer from "./store/admin-panel/admin-panel-reducer";
+
+const allReducers = combineReducers({user_reducer,admin_reducer});
+
+export const store = createStore(allReducers);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Application />
-  </React.StrictMode>,
+    <Provider store={store}>
+        <App />
+    </Provider>,
   document.getElementById('root')
 );
 
