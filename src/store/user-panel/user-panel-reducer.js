@@ -2,6 +2,7 @@ import * as actions from "./user-panel-action-types";
 
 const initState = {
     count: 0,
+    userData: null,
 };
 
 // state = {
@@ -20,6 +21,10 @@ const user_reducer = (state = initState,action)=> {
         case actions.SAVE_CLICK_COUNT:
             console.log("Saving Count");
             newState.count = action.payload;
+            break;
+        case actions.SAVE_USER_DATA:
+            console.log("Saving Api Data");
+            newState.userData = action.payload;
             break;
         default:
             break;

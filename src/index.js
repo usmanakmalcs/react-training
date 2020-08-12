@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers} from "redux";
+import { createStore, combineReducers,applyMiddleware} from "redux";
+import thunk from 'redux-thunk';
+
 import './index.css';
 import App from './Components/App/App';
 import * as serviceWorker from './serviceWorker';
@@ -10,7 +12,7 @@ import admin_reducer from "./store/admin-panel/admin-panel-reducer";
 
 const allReducers = combineReducers({user_reducer,admin_reducer});
 
-export const store = createStore(allReducers);
+export const store = createStore(allReducers,applyMiddleware(thunk));
 
 ReactDOM.render(
     <Provider store={store}>

@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from 'react-redux';
 import SideBar from "./SideBar";
-import {saveCount} from "../../store/user-panel/user-panel-actions";
+import {getUserData, saveCount} from "../../store/user-panel/user-panel-actions";
 
 class Layout extends React.Component{
 
@@ -53,7 +53,8 @@ const mapStateToProps =(state) => {
 const mapDispatchToProps = (dispatch) => {
     console.log("Saving Data From Component to Reducer");
     return {
-        saveClickCount: (data)=> dispatch(saveCount(data))
+        saveClickCount: (data)=> dispatch(saveCount(data)),
+        getUsersDetail: () => dispatch(getUserData())
     }
 };
 
