@@ -9,18 +9,21 @@ const getNamesJSX = (namesJSON) => {
     })
 };
 
-export const Heading = () => {
+export const Heading = (props) => {
     const namesJSON = [
-        {
-            text: 'Awais',
-        },
         {
             text: 'Hamza',
         },
     ];
+    console.log(props);
+    const { state } = props.location;
     return (
         <div>
-            {getNamesJSX(namesJSON)}
+            <div>
+                {getNamesJSX(namesJSON)}
+            </div>
+
+            <HeaderText text={(state && state.name) || "Empty"}/>
         </div>
     )
 };
